@@ -21,3 +21,13 @@ class Email:
         except Exception as error:
             print(error)
             return False
+
+    def send_email(self, to, subject='Test Subject', message='Test Message', eom="Sent Via Django App"):
+        new = "Subject: {0}\n{1} \n\n{2}".format(subject, message, eom)
+        try:
+            self.smtp.sendmail(self._email, to, new)
+            return True
+
+        except Exception as error:
+            print(error)
+            return False

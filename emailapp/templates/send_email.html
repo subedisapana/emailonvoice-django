@@ -6,7 +6,7 @@
 <body onload="pageStartUp();">
 <h2>{{ status }}</h2>
 <div class="content">
-    <div class="title">VOICE BASED EMAIL</div>
+    <div class="title">EMAIL ON VOICE</div>
     <div class="title">SEND EMAIL</div>
     <form action="{% url 'email' email_object_id %}" method="POST">
         {% csrf_token %}

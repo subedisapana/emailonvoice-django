@@ -189,3 +189,9 @@ a {
 .sign-in-button:hover {
     cursor: pointer;
 }
+
+.text-box {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}

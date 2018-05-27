@@ -61,6 +61,7 @@ def retrieve_email_object(email, password):
     status = ''
     if client == '':
         status = 'Login Unsuccessful! No Email Entered!'
+        return None, status, None, None
 
     email_object = Email(host=host_mapping.get(client)[0],
                          port=host_mapping.get(client)[1],

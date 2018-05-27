@@ -8,7 +8,6 @@ function pagestartup() {
 function loginUser() {
     // Login the user with the spoken credentials
     document.getElementById("signin").click();
-    responsiveVoice.speak("Login Successful!");
 }
 
 function readEmail() {

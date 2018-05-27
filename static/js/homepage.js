@@ -1,5 +1,5 @@
 function pagestartup() {
-    responsiveVoice.speak("Welcome to Voice Based Email Application...");
+    responsiveVoice.speak("Welcome to Email On Voice");
     setTimeout(1000);
     responsiveVoice.speak("Please speak your email address");
     setTimeout(readEmail, 6000);
@@ -18,6 +18,7 @@ function readEmail() {
 function readPassword() {
     responsiveVoice.speak("Please speak your password");
     speechToText("password");
+    
     setTimeout(loginUser, 10000);
 }
 

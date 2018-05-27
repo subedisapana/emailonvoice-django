@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name='homepage'),
     path('login/', views.login_view, name='login'),
+    path('email/<int:id>', views.send_email, name='email'),
 ]

@@ -15,7 +15,7 @@ async function pagestartup() {
     speechToText("email");
     await wait(10000);
     responsiveVoice.speak("Please speak your password");
-    await wait(3000);
+    await wait(4000);
     speechToText("password");
     await wait(10000);
     loginUser();

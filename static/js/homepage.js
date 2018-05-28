@@ -1,26 +1,34 @@
-function pagestartup() {
+
+// Use a promise and async function to delay the execution of your code...
+
+const wait = (ms) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+};
+
+async function pagestartup() {
     responsiveVoice.speak("Welcome to Email On Voice");
-    setTimeout(1000);
+    await wait(2000);
     responsiveVoice.speak("Please speak your email address");
-    setTimeout(readEmail, 6000);
+    await wait(4000);
+    speechToText("email");
+    await wait(10000);
+    responsiveVoice.speak("Please speak your password");
+    await wait(3000);
+    speechToText("password");
+    await wait(10000);
+    loginUser();
+    // Aba try gar ta Email ra Password bolera
 }
+
+
 
 function loginUser() {
     // Login the user with the spoken credentials
     document.getElementById("signin").click();
 }
 
-function readEmail() {
-    speechToText("email");
-    setTimeout(readPassword, 10000);
-}
-
-function readPassword() {
-    responsiveVoice.speak("Please speak your password");
-    speechToText("password");
-    
-    setTimeout(loginUser, 10000);
-}
 
 function speechToText(attribute) {
     // Converts speech to text when invoked...

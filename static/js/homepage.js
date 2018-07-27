@@ -19,7 +19,7 @@ async function pagestartup() {
     speechToText("password");
     await wait(10000);
     loginUser();
-    // Aba try gar ta Email ra Password bolera
+
 }
 
 

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 from .models import UserInfo
 from helpers.email import Email
-
+from helpers import readmail
 
 # Create your views here.
 def homepage(request):

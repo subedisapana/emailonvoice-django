@@ -3,12 +3,17 @@ from django.http import HttpResponse
 
 from .models import UserInfo
 from helpers.email import Email
-from helpers import readmail
+#from helpers import readmail
 
 # Create your views here.
 def homepage(request):
     return render(request, 'homepage.html', {'status': ''})
 
+def dashboard(request):
+    return render(request,'dashboard.html')
+
+#def inbox(request):
+    #return render(request, 'inbox.html')
 
 def login_view(request):
     email = request.POST.get('email')
@@ -23,8 +28,8 @@ def login_view(request):
         user_info, created = UserInfo.objects.get_or_create(email=email, password=password,
                                                    host=host,
                                                    port=port)
-        return render(request, 'send_email.html', {'email_object_id': user_info.id, 'status': 'Login Successful!'})
-
+        return render(request,'dashboard.html')                           
+       # return render(request, 'send_email.html', {'email_object_id': user_info.id, 'status': 'Login Successful!'})
     return render(request, 'homepage.html', {'status': 'Login Not Successful! Please enter your credentials again!'})
 
 

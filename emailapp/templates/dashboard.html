@@ -4,36 +4,23 @@
 
 <link rel="stylesheet"  href={% static 'css/dashboard.css' %}>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <body onload="pagestart();">
-<div id="sidebar">
+<div class="sidebar">
 
     <ul>
-        <li><a href="#">Compose</a></li>
-        <li><a href="#">Inbox</a></li>
-        <li><a href="#">Sent mail</a></li>
-        <li><a href="#">Logout</a></li>
-        <li><a href="#">Drafts</a></li>
-        <li><a href="#">Trash</a></li>
+        <li><a href="templates/send_email.html">1.Compose Message</a></li>
+        <li><a href="#">2.Check Box</a></li>
+        <li><a href="#">3.Sent mail</a></li>
+        <li><a href="#">4.Logout</a></li>
+        <li id="search-bar" align="right">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                    </form>
 
 
     </ul>
 </div>
-
-<!--icon bar-->
-<div class="icon-bar">
-  <a class="active" href="#"><i class="fa fa-home"></i></a>
-  <a href="#"><i class="fa fa-search"></i></a>
-  <a href="#"><i class="fa fa-envelope"></i></a>
-  <a href="#"><i class="fa fa-globe"></i></a>
-  <a href="#"><i class="fa fa-trash"></i></a>
-
-</div>
-
-
-</div>
-
-</body>
-</html>
 

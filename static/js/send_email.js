@@ -1,3 +1,3 @@
 function pageStartUp() {
-    responsiveVoice.speak("Login Successful");
+    responsiveVoice.speak("Compose your email");
 }

@@ -1,66 +1,56 @@
-
-body
-{
-
+body{
     margin:0px;
-    padding:0px;
-    font-family: sans-serif;
+     background: url("https://www.deviantart.com/ult-gfx/art/Boter-Flowers-122194776");
+    background-size: cover;
 }
-#sidebar
-{
-    background:#151718 ;
-    width:200px;
-    height: 100%;
-    display:block;
-    position:fixed;
-    left:0px;
-    top:20px;
+.sidebar{
+    width: 100%;
+    background: #000033;
+    height: 100px;
+    margin-top: 0px;
 }
-ul{
-    margin: 10px;
-    padding: 10px;
+ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
 }
 
-ul li{
-    list-style:none;
-}
-ul li a{
-    background: #1C1E1F;
-    color:#ccc;
-    border-bottom: 2px solid #111;
-    display: block;
-    width: 160px;
-    padding:10px;
-}
-
-ul li a{
-    background:#1C1E1F;
-}
-.icon-bar {
-    width:100%;
-    background-color: #555;
-    overflow:auto;
-    margin-left: 165px;
-    top-margin:0px;
-
-}
-.icon-bar a {
+li{
     float: left;
-    width: 17%;
-    text-align: center;
-    padding: 10px 0px;
-    transition: all 0.3s ease;
+    margin-top: 50px;
+}
+a{
+    top-right: 0px;
+    width:250px;
     color: white;
-    font-size: 34px;
-    margin-top:0px;
+    display:block;
+    text-decoration: none;
+    font-size: 20px;
+    text-align:center;
+    padding:5px;
+    border-radius:10px;
+    font-family: century gothic;
+    font-weight:bold;
+}
+input[type=text] {
+    width: 100px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 15px 12px 25px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    position: center;
 }
 
-.icon-bar a:hover {
-    background-color: #000;
-}
-
-.active {
-    background-color: #4CAF50 !important;
+input[type=text]:focus {
+    width: 50%;
 }
 
 

@@ -1,6 +1,6 @@
 async function pagestart()
 {
-    Composemail();
+    responsiveVoice.speak("Login successful");
 }
 
 function Composemail() {

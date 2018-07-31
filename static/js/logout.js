@@ -1,30 +1,25 @@
-
-// Use a promise and async function to delay the execution of your code...
-
 const wait = (ms) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-};
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  };
+  
+  async function page() {
+      responsiveVoice.speak("You have logged out successfully");
+      await wait(4000);
+      responsiveVoice.speak("If you want to sign in again, Please speak your email address");
+      await wait(6000);
+      speechToText("email");
+      await wait(10000);
+      responsiveVoice.speak("Please speak your password");
+      await wait(4000);
+      speechToText("password");
+      await wait(10000);
+      loginUser();
+  
+  }
 
-async function pagestartup() {
-    responsiveVoice.speak("Welcome to Email On Voice");
-    await wait(3000);
-    responsiveVoice.speak("Please speak your email address");
-    await wait(4000);
-    speechToText("email");
-    await wait(10000);
-    responsiveVoice.speak("Please speak your password");
-    await wait(4000);
-    speechToText("password");
-    await wait(10000);
-    loginUser();
-
-}
-
-
-
-function loginUser() {
+  function loginUser() {
     // Login the user with the spoken credentials
     document.getElementById("signin").click();
 }

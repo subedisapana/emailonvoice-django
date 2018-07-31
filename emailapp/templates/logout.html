@@ -1,0 +1,21 @@
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href={% static 'css/homepage.css' %}>
+</head>
+<body onload="page();">
+<h2>{{ status }}</h2>
+<div class="content">
+    <div class="title">EMAIL ON VOICE</div>
+    <div class="title">SIGN IN</div>
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <input id="email" name="email" type="text" placeholder="E-mail"/>
+        <input id="password" name="password" type="password" placeholder="Password"/>
+        <button type="submit" class="sign-in-button" id="signin">Sign In</button>
+    </form>
+</div>
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+<script src="{% static 'js/logout.js' %}"></script>
+</body>
+</html>

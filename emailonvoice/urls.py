@@ -25,4 +25,5 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('login/templates/send_email.html', views.compose, name='compose'),
     path('email/<int:id>', views.send_email, name='email'),
+    path('login/templates/homepage.html',views.logout, name='logout')
 ]

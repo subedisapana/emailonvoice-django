@@ -20,6 +20,9 @@ password = ""
 def homepage(request):
     return render(request, 'homepage.html', {'status': ''})
 
+def logout(request):
+    return render(request, 'logout.html', {'status':''})
+
 def compose(request):
     '''
     if request.method == 'POST':

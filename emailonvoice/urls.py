@@ -21,7 +21,7 @@ from emailapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name='homepage'),
-    path('inbox/', views.inbox, name='inbox'),
+    path('login/templates/inbox.html', views.inbox, name='inbox'),
     path('login/', views.login_view, name='login'),
     path('login/templates/send_email.html', views.compose, name='compose'),
     path('email/<int:id>', views.send_email, name='email'),

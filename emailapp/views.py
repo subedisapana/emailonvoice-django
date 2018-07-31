@@ -1,27 +1,101 @@
+import email
+import imaplib
+import smtplib
+import sys
+import tempfile
+import time
+
+from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render
-from django.http import HttpResponse
+
+from helpers.email import Email
 
 from .models import UserInfo
-from helpers.email import Email
+
 #from helpers.readmail import Readmail
+email = ""
+password = ""
 
 # Create your views here.
 def homepage(request):
     return render(request, 'homepage.html', {'status': ''})
 
 def compose(request):
-    return render(request, 'send_email.html')
+    '''
+    if request.method == 'POST':
+        form = send_email(request.POST or None,id)
+        if form.is_valid():
+            #unpack form values
+            to_email= form.cleaned_data['to_email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+
+            email_object = retrieve_email_object(email, password)
+
+            if email_object.send_email(to_email,subject,message):
+                return HttpResponse("Message sent successfully!!!")
+
+            else:
+                return HttpResponse("Message sending unsuccessful!!!")
+                
+
+        return HttpResponseRedirect(reverse('email'))   
+    else:
+        form = send_email(request,id)
+     '''   
+    return render(request, 'send_email.html') #, {'form':form})
    
 
 def dashboard(request):
     return render(request,'dashboard.html')
 
 def inbox(request):
-    msg = email.message_from_bytes(data[0][1])
-    email_subject = msg['subject']
-    email_from = msg['from']
+        FROM_EMAIL = email #Enter the email name
+        FROM_PWD = password #Enter email password
 
-    return render(request, 'inbox.html',{'msg':msg})
+        email_object, status, host, port = retrieve_email_object(email, password)
+
+        SMTP_SERVER = "imap.gmail.com"
+        NUM_TO_READ = 10 #Replace with number of earliest emails desired
+
+        #Establish a connection and login to the Gmail account
+        mail = imaplib.IMAP4_SSL(SMTP_SERVER)
+        if email_object.authenticate_login():
+            
+            mail.login(FROM_EMAIL,FROM_PWD)
+
+        #Look for all emails in the inbox
+        mail.select('inbox')
+        typ, data = mail.search(None, 'ALL')
+        
+        x = 0
+        idList = []
+
+        #Get a list of all the email ids, reverse it so that 
+        #the newest ones are at the front of the list
+        for id in data[0].rsplit():
+            idList.append(id)
+
+        idList = list(reversed(idList))
+
+        #Fetch the first NUM_to_READ email subject lines and 
+        #their recipients
+        for id in idList:
+            typ, data = mail.fetch(id, '(RFC822)')
+
+            if x >= NUM_TO_READ:
+                break
+            else:
+                x += 1
+                msg = email.message_from_bytes(data[0][1])
+
+                print('Message #', x)
+                email_subject = msg['subject']
+                email_from = msg['from']
+                print('From : ' + email_from)
+                print('Subject : ' + email_subject + '\n')
+
+        return render(request, 'inbox.html',{'msg':msg})
 
 def login_view(request):
     email = request.POST.get('email')

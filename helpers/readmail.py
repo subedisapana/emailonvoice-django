@@ -45,7 +45,11 @@ class Readmail:
             #their recipients
             for id in idList:
                 typ, data = mail.fetch(id, '(RFC822)')
-
+                msg = email.message_from_bytes(data[0][1])
+                
+                
+                
+                
                 if x >= NUM_TO_READ:
                     break
                 else:
@@ -63,7 +67,7 @@ class Readmail:
 
             #Allow the user to read the content of any emails
             while(1):
-                message_to_read = input("Which message would you like to open? (-1 to quit) ")
+                message_to_read = 5
                 message_to_read = int(message_to_read)
 
                 #Basic error checking

@@ -15,6 +15,7 @@ from .models import UserInfo
 #from helpers.readmail import Readmail
 email = ""
 password = ""
+uid = ""
 
 # Create your views here.
 def homepage(request):
@@ -24,6 +25,8 @@ def logout(request):
     return render(request, 'logout.html', {'status':''})
 
 def compose(request):
+
+    return render(request, 'send_email.html', {'email_object_id': uid, 'status': 'Login Successful!'})
     '''
     if request.method == 'POST':
         form = send_email(request.POST or None,id)
@@ -46,59 +49,59 @@ def compose(request):
     else:
         form = send_email(request,id)
      '''   
-    return render(request, 'send_email.html') #, {'form':form})
+    #return render(request, 'send_email.html') #, {'form':form})
    
 
 def dashboard(request):
     return render(request,'dashboard.html')
 
 def inbox(request):
-        FROM_EMAIL = email #Enter the email name
-        FROM_PWD = password #Enter email password
+    FROM_EMAIL = email #Enter the email name
+    FROM_PWD = password #Enter email password
 
-        email_object, status, host, port = retrieve_email_object(email, password)
+    email_object, status, host, port = retrieve_email_object(email, password)
 
-        SMTP_SERVER = "imap.gmail.com"
-        NUM_TO_READ = 10 #Replace with number of earliest emails desired
+    SMTP_SERVER = "imap.gmail.com"
+    NUM_TO_READ = 10 #Replace with number of earliest emails desired
 
-        #Establish a connection and login to the Gmail account
-        mail = imaplib.IMAP4_SSL(SMTP_SERVER)
-        if email_object.authenticate_login():
-            
-            mail.login(FROM_EMAIL,FROM_PWD)
-
-        #Look for all emails in the inbox
-        mail.select('inbox')
-        typ, data = mail.search(None, 'ALL')
+    #Establish a connection and login to the Gmail account
+    mail = imaplib.IMAP4_SSL(SMTP_SERVER)
+    if email_object.authenticate_login():
         
-        x = 0
-        idList = []
+        mail.login(FROM_EMAIL,FROM_PWD)
 
-        #Get a list of all the email ids, reverse it so that 
-        #the newest ones are at the front of the list
-        for id in data[0].rsplit():
-            idList.append(id)
+    #Look for all emails in the inbox
+    mail.select('inbox')
+    typ, data = mail.search(None, 'ALL')
+    
+    x = 0
+    idList = []
 
-        idList = list(reversed(idList))
+    #Get a list of all the email ids, reverse it so that 
+    #the newest ones are at the front of the list
+    for id in data[0].rsplit():
+        idList.append(id)
 
-        #Fetch the first NUM_to_READ email subject lines and 
-        #their recipients
-        for id in idList:
-            typ, data = mail.fetch(id, '(RFC822)')
+    idList = list(reversed(idList))
 
-            if x >= NUM_TO_READ:
-                break
-            else:
-                x += 1
-                msg = email.message_from_bytes(data[0][1])
+    #Fetch the first NUM_to_READ email subject lines and 
+    #their recipients
+    for id in idList:
+        typ, data = mail.fetch(id, '(RFC822)')
 
-                print('Message #', x)
-                email_subject = msg['subject']
-                email_from = msg['from']
-                print('From : ' + email_from)
-                print('Subject : ' + email_subject + '\n')
+        if x >= NUM_TO_READ:
+            break
+        else:
+            x += 1
+            msg = email.message_from_bytes(data[0][1])
 
-        return render(request, 'inbox.html',{'msg':msg})
+            print('Message #', x)
+            email_subject = msg['subject']
+            email_from = msg['from']
+            print('From : ' + email_from)
+            print('Subject : ' + email_subject + '\n')
+
+    return render(request, 'inbox.html',{'msg':msg})
 
 def login_view(request):
     email = request.POST.get('email')
@@ -113,8 +116,10 @@ def login_view(request):
         user_info, created = UserInfo.objects.get_or_create(email=email, password=password,
                                                    host=host,
                                                    port=port)
-        return render(request,'dashboard.html')                     
-        #return render(request, 'send_email.html', {'email_object_id': user_info.id, 'status': 'Login Successful!'})
+        uid = user_info.id        
+        print (uid)                                  
+        return render(request,'dashboard.html')    
+    #return render(request, 'send_email.html', {'email_object_id': user_info.id, 'status': 'Login Successful!'})               
     return render(request, 'homepage.html', {'status': 'Login Not Successful! Please enter your credentials again!'})
 
 

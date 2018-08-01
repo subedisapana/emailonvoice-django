@@ -8,13 +8,14 @@
 <div class="content">
     <div class="title">EMAIL ON VOICE</div>
     <div class="title">SEND EMAIL</div>
-    {% csrf_token %}
-    <input id="to_email" name="to_email" type="text" placeholder="To: E-mail"/>
-    <input id="subject" name="subject" type="text" placeholder="Subject" style="margin-bottom: 5%"/>
-    <textarea rows="7" cols="55" name="message" id="message" placeholder="Enter your message here"
-                class="text-box"></textarea>
-    <button type="submit" class="sign-in-button" id="signin">Send Email</button>
-   
+    <form method="POST">
+        {% csrf_token %}
+        <input id="to_email" name="to_email" type="text" placeholder="To: E-mail"/>
+        <input id="subject" name="subject" type="text" placeholder="Subject" style="margin-bottom: 5%"/>
+        <textarea rows="7" cols="55" name="message" id="message" placeholder="Enter your message here"
+                    class="text-box"></textarea>
+        <button type="submit" class="sign-in-button" id="signin">Send Email</button>
+    </form>
  </div>
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 <script src="{% static 'js/send_email.js' %}"></script>

@@ -24,7 +24,7 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('compose/',views.compose,name='compose'),
-    path('compose/<int:id>', views.send_email, name='email'),
+    path('email/<int:id>', views.send_email, name='email'),
     path('inbox/',views.inbox,name='inbox'),
     path('logout',views.logout, name="logout"),
 ]

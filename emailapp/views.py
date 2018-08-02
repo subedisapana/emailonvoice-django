@@ -15,7 +15,7 @@ from .models import UserInfo
 #from helpers.readmail import Readmail
 email = ""
 password = ""
-uid = ""
+uid = 1
 
 # Create your views here.
 def homepage(request):
@@ -38,9 +38,9 @@ def login_view(request):
                                                    host=host,
                                                    port=port)
         uid = user_info.id        
-        print (uid)                                  
+        #print ("/n" + uid + "/n")                                  
         return render(request,'dashboard.html')    
-    #return render(request, 'send_email.html', {'email_object_id': user_info.id, 'status': 'Login Successful!'})               
+        #return render(request, 'send_email.html', {'email_object_id': user_info.id, 'status': 'Login Successful!'})               
     return render(request, 'homepage.html', {'status': 'Login Not Successful! Please enter your credentials again!'})
 
 def dashboard(request):

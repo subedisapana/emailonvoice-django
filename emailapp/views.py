@@ -74,6 +74,7 @@ def compose(request):
     #return render(request, 'send_email.html') #, {'form':form})
 
 def inbox(request):
+    '''
     FROM_EMAIL = email #Enter the email name
     FROM_PWD = password #Enter email password
 
@@ -121,7 +122,8 @@ def inbox(request):
 
     return render(request, 'inbox.html',{'msg':msg})
 
-
+'''
+    return render (request, 'inbox.html')
 
 def send_email(request, id):
     try:

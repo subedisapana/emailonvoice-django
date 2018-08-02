@@ -22,13 +22,10 @@ async function pagestartup() {
 
 }
 
-
-
 function loginUser() {
     // Login the user with the spoken credentials
     document.getElementById("signin").click();
 }
-
 
 function speechToText(attribute) {
     // Converts speech to text when invoked...

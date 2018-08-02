@@ -9,10 +9,10 @@
 <div class="sidebar">
 
     <ul>
-        <li><a href="templates/send_email.html">1.Compose Message</a></li>
-        <li><a href="templates/inbox.html">2.Check Box</a></li>
-        <li><a href="#">3.Sent mail</a></li>
-        <li><a href="templates/homepage.html">4.Logout</a></li>
+        <li><a href="{% url 'compose' %}">1.Compose Message</a></li>
+        <li><a href="{% url 'inbox' %}">2.Check Box</a></li>
+        <li><a href="{% url 'dashboard' %}">3.Sent mail</a></li>
+        <li><a href="{% url 'homepage' %}">4.Logout</a></li>
         <li id="search-bar" align="right">
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">

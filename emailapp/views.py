@@ -24,6 +24,28 @@ def homepage(request):
 def logout(request):
     return render(request, 'logout.html', {'status':''})
 
+def login_view(request):
+    email = request.POST.get('email')
+    password = request.POST.get('password')
+
+    email_object, status, host, port = retrieve_email_object(email, password)
+
+    if status != '':
+        return render(request, 'homepage.html', {'status': status})
+
+    if email_object.authenticate_login():
+        user_info, created = UserInfo.objects.get_or_create(email=email, password=password,
+                                                   host=host,
+                                                   port=port)
+        uid = user_info.id        
+        print (uid)                                  
+        return render(request,'dashboard.html')    
+    #return render(request, 'send_email.html', {'email_object_id': user_info.id, 'status': 'Login Successful!'})               
+    return render(request, 'homepage.html', {'status': 'Login Not Successful! Please enter your credentials again!'})
+
+def dashboard(request):
+    return render(request, 'dashboard.html', {'status': ''})
+
 def compose(request):
 
     return render(request, 'send_email.html', {'email_object_id': uid, 'status': 'Login Successful!'})
@@ -50,10 +72,6 @@ def compose(request):
         form = send_email(request,id)
      '''   
     #return render(request, 'send_email.html') #, {'form':form})
-   
-
-def dashboard(request):
-    return render(request,'dashboard.html')
 
 def inbox(request):
     FROM_EMAIL = email #Enter the email name
@@ -103,24 +121,6 @@ def inbox(request):
 
     return render(request, 'inbox.html',{'msg':msg})
 
-def login_view(request):
-    email = request.POST.get('email')
-    password = request.POST.get('password')
-
-    email_object, status, host, port = retrieve_email_object(email, password)
-
-    if status != '':
-        return render(request, 'homepage.html', {'status': status})
-
-    if email_object.authenticate_login():
-        user_info, created = UserInfo.objects.get_or_create(email=email, password=password,
-                                                   host=host,
-                                                   port=port)
-        uid = user_info.id        
-        print (uid)                                  
-        return render(request,'dashboard.html')    
-    #return render(request, 'send_email.html', {'email_object_id': user_info.id, 'status': 'Login Successful!'})               
-    return render(request, 'homepage.html', {'status': 'Login Not Successful! Please enter your credentials again!'})
 
 
 def send_email(request, id):

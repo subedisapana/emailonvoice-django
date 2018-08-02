@@ -21,9 +21,10 @@ from emailapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name='homepage'),
-    path('login/templates/inbox.html', views.inbox, name='inbox'),
     path('login/', views.login_view, name='login'),
-    path('login/templates/send_email.html', views.compose, name='compose'),
-    path('email/<int:id>', views.send_email, name='email'),
-    path('login/templates/homepage.html',views.logout, name='logout')
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('compose/',views.compose,name='compose'),
+    path('compose/<int:id>', views.send_email, name='email'),
+    path('inbox/',views.inbox,name='inbox'),
+    path('logout',views.logout, name="logout"),
 ]

@@ -8,7 +8,7 @@
 <div class="content">
     <div class="title">EMAIL ON VOICE</div>
     <div class="title">SEND EMAIL</div>
-    <form method="POST">
+    <form action="{% url 'email' email_object_id %}" method="POST">
         {% csrf_token %}
         <input id="to_email" name="to_email" type="text" placeholder="To: E-mail"/>
         <input id="subject" name="subject" type="text" placeholder="Subject" style="margin-bottom: 5%"/>

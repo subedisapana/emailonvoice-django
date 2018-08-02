@@ -46,6 +46,9 @@ def login_view(request):
 def dashboard(request):
     return render(request, 'dashboard.html', {'status': ''})
 
+def sentmail(request):
+    return render(request, 'sentmails.html')
+
 def compose(request):
 
     return render(request, 'send_email.html', {'email_object_id': uid, 'status': 'Login Successful!'})

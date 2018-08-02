@@ -27,4 +27,5 @@ urlpatterns = [
     path('email/<int:id>', views.send_email, name='email'),
     path('inbox/',views.inbox,name='inbox'),
     path('logout',views.logout, name="logout"),
+    path('sentmail/',views.sentmail,name='sentmail'),
 ]

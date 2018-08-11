@@ -9,19 +9,21 @@
 <div class="sidebar">
 
     <ul>
-        <li><a href="{% url 'compose' %}">1.Compose Message</a></li>
-        <li><a href="{% url 'inbox' %}">2.Check Box</a></li>
-        <li><a href="{% url 'sentmail' %}">3.Sent mail</a></li>
-        <li><a href="{% url 'homepage' %}">4.Logout</a></li>
+        <li><a id="compose" href="{% url 'compose' %}">1.Compose message</a></li>
+        <li><a id="checkinbox" href="{% url 'inbox' %}">2.Check inbox</a></li>
+        <li><a id="checksentmails" href="{% url 'sentmail' %}">3.Sent mails</a></li>
+        <li><a id="logout" href="{% url 'logout' %}">4.Logout</a></li>
         <li id="search-bar" align="right">
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input id="number" name="number" type="text" class="form-control" placeholder="Search">
             </div>
         </form>
+    </ul>
+</div>
 
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 <script src="{% static 'js/dashboard.js' %}"></script>
-    </ul>
-</div>
+</body>
+</html>
 

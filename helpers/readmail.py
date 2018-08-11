@@ -14,8 +14,8 @@ class Readmail:
 
     def read_email_from_gmail():
 
-        FROM_EMAIL = "emailonvoice@gmail.com" #Enter the email name
-        FROM_PWD = "emailonvoice" #Enter email password
+        FROM_EMAIL = "breakthewall72079@gmail.com" #Enter the email name
+        FROM_PWD = "speechrecognition" #Enter email password
         SMTP_SERVER = "imap.gmail.com"
         NUM_TO_READ = 10 #Replace with number of earliest emails desired
 
@@ -27,7 +27,7 @@ class Readmail:
 
             #Look for all emails in the inbox
             mail.select('inbox')
-            type, data = mail.search(None, 'ALL')
+            typ, data = mail.search(None, 'ALL')
             
             x = 0
             idList = []
@@ -48,8 +48,6 @@ class Readmail:
                 msg = email.message_from_bytes(data[0][1])
                 
                 
-                
-                
                 if x >= NUM_TO_READ:
                     break
                 else:
@@ -67,7 +65,7 @@ class Readmail:
 
             #Allow the user to read the content of any emails
             while(1):
-                message_to_read = 5
+                message_to_read = 10
                 message_to_read = int(message_to_read)
 
                 #Basic error checking

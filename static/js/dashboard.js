@@ -13,19 +13,21 @@ async function pagestart()
   speechToText("number");
   await wait(4000);
   var number = document.getElementById("number").value
-  console.log("this" + number);
-  if (number = "1"){
+  console.log ("this" + number);
+  if (number == "1"){
     Composemail();
-  } else if (number = "2"){
+  } else if (number == "2"){
     Checkinbox();
   }
-  else if (number = "3"){
+  else if (number == "3"){
     Checksentmails();
   }
-  else if (number = "4"){
+  else if (number == "4"){
     Loggingout();
   } 
-   
+  else{
+    pagestart();
+  }
 }    
    
 function Composemail() {

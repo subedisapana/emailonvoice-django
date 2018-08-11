@@ -12,6 +12,8 @@ async function pagestart()
   await wait(10000);
   speechToText("number");
   await wait(4000);
+  var number = document.getElementById("number").value
+  console.log("this" + number);
   if (number = "1"){
     Composemail();
   } else if (number = "2"){

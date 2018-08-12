@@ -8,6 +8,38 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
+
+        <div>
+                <ul>
+                        {% for number in shankhya %}
+                          <li>{{ number }}</li>
+                          <break>
+                          <li> </li>
+                        {% endfor %} 
+                </ul>
+                </div>
+                <div>
+                <ul>
+                        {% for email in kasle %}
+                          <li>{{ email }}</li>
+                          <break>
+                          <li> </li>
+                        {% endfor %} 
+                </ul>
+                </div>
+                <div>
+                <ul>
+                        {% for sub in kuro %}
+                          <li>{{ sub }}</li>
+                          <break>
+                          <li> </li>
+                        {% endfor %} 
+                </ul>
+                </div>
+    <!--
+
+
+
 <div class="container">
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
      <div class="mail-box">
@@ -243,5 +275,6 @@
                           </div>
                       </aside>
                   </div>
+                      -->
 </body>
 </html>

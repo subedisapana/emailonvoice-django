@@ -44,7 +44,58 @@ def dashboard(request):
     return render(request, 'dashboard.html', {'status': ''})
 
 def sentmail(request):
-    return render(request, 'sentmails.html')
+    user_info = UserInfo.objects.get(id=uid)
+    FROM_EMAIL = user_info.email#Enter the email name
+    FROM_PWD = user_info.password#Enter email password
+    
+    #email_object, status, host, port = retrieve_email_object(email, password)
+
+    SMTP_SERVER = "imap.gmail.com"
+    NUM_TO_READ = 10 #Replace with number of earliest emails desired
+
+    mail = imaplib.IMAP4_SSL(SMTP_SERVER)
+    mail.login(FROM_EMAIL,FROM_PWD)
+    #print(mail.list())
+
+    mail.select('"[Gmail]/Sent Mail"')
+    typ, data = mail.search(None, 'ALL')
+
+    x = 0
+    idList = []
+
+    #Get a list of all the email ids, reverse it so that 
+    #the newest ones are at the front of the list
+    for id in data[0].rsplit():
+        idList.append(id)
+
+    idList = list(reversed(idList))
+
+    #Fetch the first NUM_to_READ email subject lines and 
+    #their recipients
+    number = []
+    email_froms = []
+    email_sub = []
+    for id in idList:
+        typ, data = mail.fetch(id, '(RFC822)')
+        msg = emale.message_from_bytes(data[0][1])
+            
+        if x >= NUM_TO_READ:
+            break
+        else:
+            x += 1
+            msg = emale.message_from_bytes(data[0][1])
+
+            #print('Message #', x)
+            number.append(x)
+            email_from = msg['from']
+            email_froms.append(email_from)
+            email_subject = msg['subject']
+            email_sub.append(email_subject)
+            #print('From : ' + email_from)
+            #print('Subject : ' + email_subject + '\n')
+    #print (email_sub)
+    return render(request, 'sentmails.html', {'shankhya':number, 'kasle': email_froms, 'kuro': email_sub})
+    #return render(request, 'sentmails.html')
 
 def compose(request):
     return render(request, 'send_email.html', {'email_object_id': uid, 'status': 'Login Successful!'})
@@ -61,6 +112,7 @@ def inbox(request):
 
     mail = imaplib.IMAP4_SSL(SMTP_SERVER)
     mail.login(FROM_EMAIL,FROM_PWD)
+    #print(mail.list())
 
     mail.select('inbox')
     typ, data = mail.search(None, 'ALL')

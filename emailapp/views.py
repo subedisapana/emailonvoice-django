@@ -50,8 +50,9 @@ def compose(request):
     return render(request, 'send_email.html', {'email_object_id': uid, 'status': 'Login Successful!'})
 
 def inbox(request):
-    FROM_EMAIL = "progarya@gmail.com"#Enter the email name
-    FROM_PWD = "password"#Enter email password
+    user_info = UserInfo.objects.get(id=uid)
+    FROM_EMAIL = user_info.email#Enter the email name
+    FROM_PWD = user_info.password#Enter email password
     
     #email_object, status, host, port = retrieve_email_object(email, password)
 

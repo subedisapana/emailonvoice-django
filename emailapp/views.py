@@ -1,4 +1,4 @@
-import email
+import email as emale
 import imaplib
 import smtplib
 import sys
@@ -50,10 +50,10 @@ def compose(request):
     return render(request, 'send_email.html', {'email_object_id': uid, 'status': 'Login Successful!'})
 
 def inbox(request):
-    FROM_EMAIL = email#Enter the email name
-    FROM_PWD = password#Enter email password
+    FROM_EMAIL = "progarya@gmail.com"#Enter the email name
+    FROM_PWD = "password"#Enter email password
     
-    email_object, status, host, port = retrieve_email_object(email, password)
+    #email_object, status, host, port = retrieve_email_object(email, password)
 
     SMTP_SERVER = "imap.gmail.com"
     NUM_TO_READ = 10 #Replace with number of earliest emails desired
@@ -76,17 +76,29 @@ def inbox(request):
 
     #Fetch the first NUM_to_READ email subject lines and 
     #their recipients
+    number = []
+    email_froms = []
+    email_sub = []
     for id in idList:
         typ, data = mail.fetch(id, '(RFC822)')
-        msg = email.message_from_bytes(data[0][1])
+        msg = emale.message_from_bytes(data[0][1])
             
         if x >= NUM_TO_READ:
             break
         else:
             x += 1
-            msg = email.message_from_bytes(data[0][1])
-        
-    return render(request, 'inbox.html', {'msg':msg})
+            msg = emale.message_from_bytes(data[0][1])
+
+            #print('Message #', x)
+            number.append(x)
+            email_from = msg['from']
+            email_froms.append(email_from)
+            email_subject = msg['subject']
+            email_sub.append(email_subject)
+            #print('From : ' + email_from)
+            #print('Subject : ' + email_subject + '\n')
+    #print (email_sub)
+    return render(request, 'inbox.html', {'shankhya':number, 'kasle': email_froms, 'kuro': email_sub})
 
 '''
     return render (request, 'inbox.html')

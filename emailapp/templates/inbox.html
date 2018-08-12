@@ -18,6 +18,8 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
+    <!--
+
     <div>
         <ul>
                 {% for number in shankhya %}
@@ -46,7 +48,7 @@
         </ul>
         </div>
 
-    <!--
+    -->
 
     
 <div class="container">
@@ -74,8 +76,8 @@
                     <input type="checkbox" class="mail-checkbox">
                 </td>
                 <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                <td class="view-message  dont-show">sapana subedi</td>
-                <td class="view-message ">Project</td>
+                <td class="view-message  dont-show">{{ kasle.0 }}</td>
+                <td class="view-message ">{{ kuro.0 }}</td>
                 <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td>
                 <td class="view-message  text-right">8:15 AM</td>
             </tr>
@@ -84,8 +86,8 @@
                     <input type="checkbox" class="mail-checkbox">
                 </td>
                 <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                <td class="view-message dont-show">Google Webmaster </td>
-                <td class="view-message">Improve the search presence of WebSite</td>
+                <td class="view-message dont-show">{{ kasle.1 }}</td>
+                <td class="view-message">{{ kuro.1 }}</td>
                 <td class="view-message inbox-small-cells"></td>
                 <td class="view-message text-right">1 Aug</td>
             </tr>
@@ -93,8 +95,8 @@
                 <td class="inbox-small-cells">
             <input type="checkbox" class="mail-checkbox"></td>
             <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-            <td class="view-message dont-show">Mark from kaggle</td>
-            <td class="view-message">Airbus competition launch</td>
+            <td class="view-message dont-show">{{ kasle.2 }}</td>
+            <td class="view-message">{{ kuro.2 }}</td>
             <td class="view-message inbox-small-cells"></td>
             <td class="view-message text-right">31 Jul</td>
              </tr>
@@ -103,8 +105,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="view-message dont-show">Sunim Acharya</td>
-        <td class="view-message">Embedded notes</td>
+        <td class="view-message dont-show">{{ kasle.3 }}</td>
+        <td class="view-message">{{ kuro.3 }}</td>
         <td class="view-message inbox-small-cells"></td>
         <td class="view-message text-right">22 Jul</td>
     </tr>
@@ -113,8 +115,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
-        <td class="view-message dont-show">Freelancer.com <span class="label label-danger pull-right">urgent</span></td>
-        <td class="view-message">Stop wasting your visitors </td>
+        <td class="view-message dont-show">{{ kasle.4 }}<span class="label label-danger pull-right">urgent</span></td>
+        <td class="view-message">{{ kuro.4 }}</td>
         <td class="view-message inbox-small-cells"></td>
         <td class="view-message text-right">18 Jul</td>
     </tr>
@@ -123,8 +125,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
-        <td class="view-message dont-show">WOW Slider </td>
-        <td class="view-message">New WOW Slider v7.8 - 67% off</td>
+        <td class="view-message dont-show">{{ kasle.5 }}</td>
+        <td class="view-message">{{ kuro.5 }}</td>
         <td class="view-message inbox-small-cells"><i class="fa fa-paperclip"></i></td>
         <td class="view-message text-right">2 Jul</td>
     </tr>
@@ -133,8 +135,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
-        <td class="view-message dont-show">LinkedIn Pulse</td>
-        <td class="view-message">The One Sign Your Co-Worker Will Stab</td>
+        <td class="view-message dont-show">{{ kasle.6 }}</td>
+        <td class="view-message">{{ kuro.6 }}</td>
         <td class="view-message inbox-small-cells"><i class="fa fa-paperclip"></i></td>
         <td class="view-message text-right">30 Jun</td>
     </tr>
@@ -143,8 +145,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="view-message dont-show">suman subedi<span class="label label-success pull-right">megazine</span></td>
-        <td class="view-message view-message">Notes</td>
+        <td class="view-message dont-show">{{ kasle.7 }}<span class="label label-success pull-right">megazine</span></td>
+        <td class="view-message view-message">{{ kuro.7 }}</td>
         <td class="view-message inbox-small-cells"></td>
         <td class="view-message text-right">12 Jun</td>
     </tr>
@@ -153,8 +155,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="view-message dont-show">Facebook</td>
-        <td class="view-message view-message">Somebody requested a new password </td>
+        <td class="view-message dont-show">{{ kasle.8 }}</td>
+        <td class="view-message view-message">{{ kuro.8 }}</td>
         <td class="view-message inbox-small-cells"></td>
         <td class="view-message text-right">10 Jun</td>
     </tr>
@@ -163,8 +165,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="view-message dont-show">Skype <span class="label label-info pull-right">family</span></td>
-        <td class="view-message view-message">Password successfully changed</td>
+        <td class="view-message dont-show">{{ kasle.9 }}<span class="label label-info pull-right">family</span></td>
+        <td class="view-message view-message">{{ kuro.9 }}</td>
         <td class="view-message inbox-small-cells"></td>
         <td class="view-message text-right">23 May</td>
     </tr>
@@ -173,8 +175,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
-        <td class="view-message dont-show">Google+</td>
-        <td class="view-message">alireza, do you know</td>
+        <td class="view-message dont-show">{{ kasle.10 }}</td>
+        <td class="view-message">{{ kuro.10 }}</td>
         <td class="view-message inbox-small-cells"></td>
         <td class="view-message text-right">18 May</td>
     </tr>
@@ -183,8 +185,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
-        <td class="dont-show">sunita gajurel</td>
-        <td class="view-message">class diagrams</td>
+        <td class="dont-show">{{ kasle.11 }}</td>
+        <td class="view-message">{{ kuro.11 }}</td>
         <td class="view-message inbox-small-cells"><i class="fa fa-paperclip"></i></td>
         <td class="view-message text-right">4 May</td>
     </tr>
@@ -193,8 +195,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="view-message dont-show">LinkedIn </td>
-        <td class="view-message">Alireza: Nokia Networks, System Group and </td>
+        <td class="view-message dont-show">{{ kasle.12 }}</td>
+        <td class="view-message">{{ kuro.12 }}</td>
         <td class="view-message inbox-small-cells"><i class="fa fa-paperclip"></i></td>
         <td class="view-message text-right">28 April </td>
     </tr>
@@ -203,8 +205,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="dont-show">Facebook</td>
-        <td class="view-message view-message">Your account was recently logged into</td>
+        <td class="dont-show">{{ kasle.13 }}</td>
+        <td class="view-message view-message">{{ kuro.13 }}</td>
         <td class="view-message inbox-small-cells"></td>
         <td class="view-message text-right">5 April</td>
     </tr>
@@ -213,8 +215,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="view-message dont-show">Twitter</td>
-        <td class="view-message">Your Twitter password has been changed</td>
+        <td class="view-message dont-show">{{ kasle.14 }}</td>
+        <td class="view-message">{{ kuro.14 }}</td>
         <td class="view-message inbox-small-cells"></td>
         <td class="view-message text-right">29 March</td>
     </tr>
@@ -223,8 +225,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="view-message dont-show">InternetSeer Website Monitoring</td>
-        <td class="view-message">http://golddesigner.org/ Performance Report</td>
+        <td class="view-message dont-show">{{ kasle.15 }}</td>
+        <td class="view-message">{{ kuro.15 }}</td>
         <td class="view-message inbox-small-cells"></td>
         <td class="view-message text-right">3 March</td>
     </tr>
@@ -233,8 +235,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
-        <td class="view-message dont-show">AddMe.com</td>
-        <td class="view-message">Submit Your Website to the AddMe Business Directory</td>
+        <td class="view-message dont-show">{{ kasle.16 }}</td>
+        <td class="view-message">{{ kuro.16 }}</td>
         <td class="view-message inbox-small-cells"></td>
         <td class="view-message text-right">23 Feb</td>
     </tr>
@@ -243,8 +245,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="view-message dont-show">suman subedi</td>
-        <td class="view-message view-message">Airline reservation.png</td>
+        <td class="view-message dont-show">{{ kasle.17 }}</td>
+        <td class="view-message view-message">{{ kuro.17 }}</td>
         <td class="view-message inbox-small-cells"><i class="fa fa-paperclip"></i></td>
         <td class="view-message text-right">17 Feb</td>
     </tr>
@@ -253,8 +255,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="view-message dont-show">Bertina </td>
-        <td class="view-message">IMPORTANT: Don't lose your domains!</td>
+        <td class="view-message dont-show">{{ kasle.18 }}</td>
+        <td class="view-message">{{ kuro.18 }}</td>
         <td class="view-message inbox-small-cells"><i class="fa fa-paperclip"></i></td>
         <td class="view-message text-right">2 Feb</td>
     </tr>
@@ -263,8 +265,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
-        <td class="view-message dont-show">Laura Gaffin, S P N </td>
-        <td class="view-message">Your Website On Google (Higher Rankings Are Better)</td>
+        <td class="view-message dont-show">{{ kasle.19 }}</td>
+        <td class="view-message">{{ kuro.19 }}</td>
         <td class="view-message inbox-small-cells"></td>
         <td class="view-message text-right">16 Jan</td>
     </tr>
@@ -273,8 +275,8 @@
             <input type="checkbox" class="mail-checkbox">
         </td>
         <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="view-message dont-show">Facebook</td>
-        <td class="view-message view-message">Alireza Zare Login faild</td>
+        <td class="view-message dont-show">{{ kasle.20 }}</td>
+        <td class="view-message view-message">{{ kuro.20 }}</td>
         <td class="view-message inbox-small-cells"><i class="fa fa-paperclip"></i></td>
         <td class="view-message text-right">12 Jan</td>
     </tr>
@@ -284,6 +286,5 @@
 </div>
 </div>
 </aside>
--->
 </body>
 </html>

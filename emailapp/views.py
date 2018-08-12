@@ -51,7 +51,7 @@ def sentmail(request):
     #email_object, status, host, port = retrieve_email_object(email, password)
 
     SMTP_SERVER = "imap.gmail.com"
-    NUM_TO_READ = 10 #Replace with number of earliest emails desired
+    NUM_TO_READ = 22 #Replace with number of earliest emails desired
 
     mail = imaplib.IMAP4_SSL(SMTP_SERVER)
     mail.login(FROM_EMAIL,FROM_PWD)
@@ -108,7 +108,7 @@ def inbox(request):
     #email_object, status, host, port = retrieve_email_object(email, password)
 
     SMTP_SERVER = "imap.gmail.com"
-    NUM_TO_READ = 10 #Replace with number of earliest emails desired
+    NUM_TO_READ = 22 #Replace with number of earliest emails desired
 
     mail = imaplib.IMAP4_SSL(SMTP_SERVER)
     mail.login(FROM_EMAIL,FROM_PWD)

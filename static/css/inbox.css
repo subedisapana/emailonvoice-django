@@ -140,6 +140,7 @@ ul.labels-info li a i {
     color: #fff;
     min-height: 80px;
     padding: 20px;
+    
 }
 .inbox-head h3 {
     display: inline-block;
@@ -152,7 +153,7 @@ ul.labels-info li a i {
     border-radius: 4px 0 0 4px;
     box-shadow: none;
     color: #8a8a8a;
-    float: left;
+    float: left,right;
     height: 40px;
     padding: 0 10px;
 }

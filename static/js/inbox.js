@@ -4,9 +4,9 @@ const wait = (ms) => {
     });
   };
 
-async function voice() {
+async function voices() {
     responsiveVoice.speak("Your recent mails are:");
-    await wait(6000);
+    await wait(3000);
     var from;
     var sub;
     
@@ -26,4 +26,4 @@ async function voice() {
       i=i+1;
       //await wait(3000);
     }
-  }    
+}    

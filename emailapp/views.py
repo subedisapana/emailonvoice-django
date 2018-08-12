@@ -5,24 +5,27 @@ import sys
 import tempfile
 import time
 
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from helpers.email import Email
 
 from .models import UserInfo
 
-#from helpers.readmail import Readmail
+# from helpers.readmail import Readmail
 email = ""
 password = ""
 uid = 1
+
 
 # Create your views here.
 def homepage(request):
     return render(request, 'homepage.html', {'status': ''})
 
+
 def logout(request):
-    return render(request, 'logout.html', {'status':''})
+    return render(request, 'logout.html', {'status': ''})
+
 
 def login_view(request):
     email = request.POST.get('email')
@@ -35,31 +38,35 @@ def login_view(request):
 
     if email_object.authenticate_login():
         user_info, created = UserInfo.objects.get_or_create(email=email, password=password,
-                                                   host=host,
-                                                   port=port)                                      
-        return render(request,'dashboard.html')               
+                                                            host=host,
+                                                            port=port)
+        return render(request, 'dashboard.html')
     return render(request, 'homepage.html', {'status': 'Login Not Successful! Please enter your credentials again!'})
+
 
 def dashboard(request):
     return render(request, 'dashboard.html', {'status': ''})
 
+
 def sentmail(request):
     return render(request, 'sentmails.html')
+
 
 def compose(request):
     return render(request, 'send_email.html', {'email_object_id': uid, 'status': 'Login Successful!'})
 
+
 def inbox(request):
-    FROM_EMAIL = email#Enter the email name
-    FROM_PWD = password#Enter email password
-    
+    FROM_EMAIL = email  # Enter the email name
+    FROM_PWD = password  # Enter email password
+
     email_object, status, host, port = retrieve_email_object(email, password)
 
     SMTP_SERVER = "imap.gmail.com"
-    NUM_TO_READ = 10 #Replace with number of earliest emails desired
+    NUM_TO_READ = 10  # Replace with number of earliest emails desired
 
     mail = imaplib.IMAP4_SSL(SMTP_SERVER)
-    mail.login(FROM_EMAIL,FROM_PWD)
+    mail.login(FROM_EMAIL, FROM_PWD)
 
     mail.select('inbox')
     typ, data = mail.search(None, 'ALL')
@@ -67,30 +74,32 @@ def inbox(request):
     x = 0
     idList = []
 
-    #Get a list of all the email ids, reverse it so that 
-    #the newest ones are at the front of the list
+    # Get a list of all the email ids, reverse it so that
+    # the newest ones are at the front of the list
     for id in data[0].rsplit():
         idList.append(id)
 
     idList = list(reversed(idList))
 
-    #Fetch the first NUM_to_READ email subject lines and 
-    #their recipients
+    # Fetch the first NUM_to_READ email subject lines and
+    # their recipients
     for id in idList:
         typ, data = mail.fetch(id, '(RFC822)')
         msg = email.message_from_bytes(data[0][1])
-            
+
         if x >= NUM_TO_READ:
             break
         else:
             x += 1
             msg = email.message_from_bytes(data[0][1])
-        
-    return render(request, 'inbox.html', {'msg':msg})
+
+    return render(request, 'inbox.html', {'msg': msg})
+
 
 '''
     return render (request, 'inbox.html')
 '''
+
 
 def send_email(request, id):
     try:

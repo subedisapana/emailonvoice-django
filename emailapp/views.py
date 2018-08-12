@@ -84,10 +84,16 @@ def sentmail(request):
         else:
             x += 1
             msg = emale.message_from_bytes(data[0][1])
-
+            #print(msg['bcc'])
             #print('Message #', x)
             number.append(x)
-            email_from = msg['from']
+            email_from = msg['bcc']
+            if email_from is None:
+                email_from = "self"
+            if '<' in email_from:
+                _,_,rest = email_from.partition('<')
+                result,_,_ = rest.partition('>')
+                email_from = result
             email_froms.append(email_from)
             email_subject = msg['subject']
             email_sub.append(email_subject)
@@ -145,6 +151,10 @@ def inbox(request):
             #print('Message #', x)
             number.append(x)
             email_from = msg['from']
+            if '<' in email_from:
+                _,_,rest = email_from.partition('<')
+                result,_,_ = rest.partition('>')
+                email_from = result
             email_froms.append(email_from)
             email_subject = msg['subject']
             email_sub.append(email_subject)

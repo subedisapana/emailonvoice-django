@@ -60,9 +60,6 @@ class Readmail:
                     print('From : ' + email_from)
                     print('Subject : ' + email_subject + '\n')
 
-
-
-
             #Allow the user to read the content of any emails
             while(1):
                 message_to_read = 10

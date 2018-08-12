@@ -23,9 +23,9 @@ urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('login/', views.login_view, name='login'),
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('compose/',views.compose,name='compose'),
+    path('compose/', views.compose, name='compose'),
     path('email/<int:id>', views.send_email, name='email'),
-    path('inbox/',views.inbox,name='inbox'),
-    path('logout',views.logout, name="logout"),
-    path('sentmail/',views.sentmail,name='sentmail'),
+    path('inbox/', views.inbox, name='inbox'),
+    path('logout', views.logout, name="logout"),
+    path('sentmail/', views.sentmail, name='sentmail'),
 ]

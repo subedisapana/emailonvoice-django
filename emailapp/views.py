@@ -5,17 +5,15 @@ import sys
 import tempfile
 import time
 
+from django.contrib.auth.hashers import make_password
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 from helpers.email import Email
 
 from .models import UserInfo
-
-# from helpers.readmail import Readmail
-email = ""
-password = ""
-uid = 1
 
 
 # Create your views here.
@@ -37,9 +35,16 @@ def login_view(request):
         return render(request, 'homepage.html', {'status': status})
 
     if email_object.authenticate_login():
-        user_info, created = UserInfo.objects.get_or_create(email=email, password=password,
-                                                            host=host,
-                                                            port=port)
+        try:
+            user = User.objects.get(username=email)
+        except User.DoesNotExist:
+            user = User.objects.create(username=email, email=email, password=make_password(password))
+        user = authenticate(username=email, password=password)
+        if user:
+            login(request, user)
+            user_info, created = UserInfo.objects.get_or_create(email=email, password=password,
+                                                                host=host,
+                                                                port=port, user=user)
         return render(request, 'dashboard.html')
     return render(request, 'homepage.html', {'status': 'Login Not Successful! Please enter your credentials again!'})
 
@@ -57,8 +62,9 @@ def compose(request):
 
 
 def inbox(request):
-    FROM_EMAIL = email  # Enter the email name
-    FROM_PWD = password  # Enter email password
+    user_info = UserInfo.objects.get(user=request.user)
+    FROM_EMAIL = user_info.email  # Enter the email name
+    FROM_PWD = user_info.password  # Enter email password
 
     email_object, status, host, port = retrieve_email_object(email, password)
 

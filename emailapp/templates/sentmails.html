@@ -7,7 +7,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
-<body>
+<body onload="voice();">
 <!--
 
         <div>
@@ -66,8 +66,8 @@
                     <input type="checkbox" class="mail-checkbox">
                 </td>
                 <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                <td class="view-message  dont-show">{{ kasle.0 }}</td>
-                <td class="view-message ">{{ kuro.0 }}</td>
+                <td id="1" class="view-message  dont-show">{{ kasle.0 }}</td>
+                <td id="2" class="view-message ">{{ kuro.0 }}</td>
                 <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td>
                 <td class="view-message  text-right">7:10 AM</td>
             </tr>
@@ -76,8 +76,8 @@
                     <input type="checkbox" class="mail-checkbox">
                 </td>
                 <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                <td class="view-message dont-show">{{ kasle.1 }}</td>
-                <td class="view-message">{{ kuro.1 }}</td>
+                <td id="3" class="view-message dont-show">{{ kasle.1 }}</td>
+                <td id="4" class="view-message">{{ kuro.1 }}</td>
                 <td class="view-message inbox-small-cells"></td>
                 <td class="view-message text-right">2 Aug</td>
             </tr>
@@ -86,8 +86,8 @@
                     <input type="checkbox" class="mail-checkbox">
                 </td>
                 <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                <td class="view-message dont-show">{{ kasle.2 }}</td>
-                <td class="view-message">{{ kuro.2 }}</td>
+                <td id="5" class="view-message dont-show">{{ kasle.2 }}</td>
+                <td id="6" class="view-message">{{ kuro.2 }}</td>
                 <td class="view-message inbox-small-cells"></td>
                 <td class="view-message text-right">31 Jul</td>
             </tr>
@@ -276,6 +276,7 @@
     </div>
 </aside>
 </div>
-
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+<script src="{% static 'js/sentmails.js' %}"></script>
 </body>
 </html>

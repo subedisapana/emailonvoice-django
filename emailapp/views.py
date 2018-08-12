@@ -66,7 +66,7 @@ def inbox(request):
     FROM_EMAIL = user_info.email  # Enter the email name
     FROM_PWD = user_info.password  # Enter email password
 
-    email_object, status, host, port = retrieve_email_object(email, password)
+    email_object, status, host, port = retrieve_email_object(FROM_EMAIL, FROM_PWD)
 
     SMTP_SERVER = "imap.gmail.com"
     NUM_TO_READ = 10  # Replace with number of earliest emails desired
@@ -87,8 +87,8 @@ def inbox(request):
 
     idList = list(reversed(idList))
 
-    #Fetch the first NUM_to_READ email subject lines and
-    #their recipients
+    # Fetch the first NUM_to_READ email subject lines and
+    # their recipients
     number = []
     email_froms = []
     email_sub = []
@@ -102,16 +102,17 @@ def inbox(request):
             x += 1
             msg = emale.message_from_bytes(data[0][1])
 
-            #print('Message #', x)
+            # print('Message #', x)
             number.append(x)
             email_from = msg['from']
             email_froms.append(email_from)
             email_subject = msg['subject']
             email_sub.append(email_subject)
-            #print('From : ' + email_from)
-            #print('Subject : ' + email_subject + '\n')
-    #print (email_sub)
-    return render(request, 'inbox.html', {'shankhya':number, 'kasle': email_froms, 'kuro': email_sub})
+            # print('From : ' + email_from)
+            # print('Subject : ' + email_subject + '\n')
+    # print (email_sub)
+    return render(request, 'inbox.html', {'shankhya': number, 'kasle': email_froms, 'kuro': email_sub})
+
 
 '''
     return render (request, 'inbox.html')

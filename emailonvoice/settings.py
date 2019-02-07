@@ -28,7 +28,7 @@ SECRET_KEY = 'sg9d45-7%x_pt&fo$^s&_=ux$j6$8h5a(duxsr6a!&fp8w3@qu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://fathomless-plains-42842.herokuapp.com']
+ALLOWED_HOSTS = ['https://emailonvoice2.herokuapp.com']
 
 
 # Application definition

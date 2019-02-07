@@ -77,8 +77,8 @@ def sentmail(request):
     email_sub = []
     for id in idList:
         typ, data = mail.fetch(id, '(RFC822)')
-        msg = emale.message_from_bytes(data[0][1])
-            
+        #msg = emale.message_from_bytes(data[0][1])
+        
         if x >= NUM_TO_READ:
             break
         else:
@@ -140,7 +140,7 @@ def inbox(request):
     email_sub = []
     for id in idList:
         typ, data = mail.fetch(id, '(RFC822)')
-        msg = emale.message_from_bytes(data[0][1])
+        #msg = emale.message_from_bytes(data[0][1])
             
         if x >= NUM_TO_READ:
             break
